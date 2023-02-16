@@ -4,7 +4,7 @@ const UserPyer = new mongoose.Schema(
   {
     username: {type:String},
     email: { type: String},
-    amount:{type:Number},
+    amount:{type:Number,default:0},
     slug:{type:String},
   },
   {

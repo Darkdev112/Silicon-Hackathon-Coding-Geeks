@@ -14,16 +14,15 @@ import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Modal from 'react-bootstrap/Modal';
 import StripeCheckout from 'react-stripe-checkout'
+import axios from 'axios'
 
 const Issue = ({ card }) => {
   const router = useRouter();
   const { slug } = router.query;
   const [show, setShow] = useState(false);
   const [payment, setPayment] = useState({
-    slug: "",
+    slug: card.slug,
     amt: 0,
-    email: "",
-    username : ""
   });
 
   const handleClose = () => setShow(false);
@@ -38,12 +37,35 @@ const Issue = ({ card }) => {
   }
 
   const handlePayment = (e) => {
-    setPayment({...payment, amt : e.target.value});
-    setPayment({...payment, slug : card.slug});
+    setPayment({ ...payment, amt : Number(e.target.value) });
   }
 
-  const makepayment = () => {
+  const makepayment = async () => {
     console.log(payment);
+    const token = localStorage.getItem('token');
+    const response = await axios.post('http://localhost:5000/hackathon/payer', payment, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const fetched = response.data;
+    if (fetched.status == "update") {
+      const response2 = await axios.patch('http://localhost:5000/hackathon/payer', payment, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      const fetched2 = response2.data;
+    }
+    const response3 = await axios.patch('http://localhost:5000/hackathon/card', payment, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      const fetched3 = response3.data;
   }
 
   return (
@@ -125,7 +147,7 @@ const Issue = ({ card }) => {
                       </Modal.Header>
                       <Modal.Body>
                         <label className={`${styles.textt} mb-1`} htmlFor=""><span>Enter Amount<span className={`${styles.mand}`}>*</span></span></label><br />
-                        <input className={`${styles.labelL}`} type="number" placeholder='Amount' name='phone' onChange={handlePayment}/>
+                        <input className={`${styles.labelL}`} type="number" placeholder='Amount' name='amt' onChange={handlePayment} />
                       </Modal.Body>
                       <Modal.Footer>
                         {/* <Button variant="primary" onClick={makepayment}>

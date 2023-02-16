@@ -43,9 +43,29 @@ const postCards = async (req, res) => {
   // res.status(200).send("Hiiii");
 }
 
+const updateCards = async (req, res) => {
+  const {slug,amt} = req.body
+  const obj= await card.findOne({slug:slug});
+  const alreadyAmount=obj.amountRaised;
+  const updatedAmount=alreadyAmount+amt;
+
+  const updated={...(obj._doc),amountRaised:updatedAmount}
+    const uzzer=await card.findOneAndUpdate({slug:slug},updated,{
+        new:true,
+        runValidator:true,
+      })
+    res.json({
+        data:uzzer,
+        status:"ok"
+    })
+
+}
+
 const getCards=async(req,res)=>{
     const detail=await card.find({});
     res.send({status : "ok", info:detail})
 }
 
-module.exports = {postCards,getCards}
+
+
+module.exports = {postCards,getCards,updateCards}
