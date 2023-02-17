@@ -1,0 +1,14 @@
+.table{
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    width: 80%;
+}
+.name{
+    font-size:1.5rem;
+}
+.amount{
+    font-size:1.5rem;
+    color: rgb(37, 61, 0);
+}

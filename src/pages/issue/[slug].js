@@ -14,15 +14,16 @@ import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Modal from 'react-bootstrap/Modal';
 import StripeCheckout from 'react-stripe-checkout'
-import axios from 'axios'
 
 const Issue = ({ card }) => {
   const router = useRouter();
   const { slug } = router.query;
   const [show, setShow] = useState(false);
   const [payment, setPayment] = useState({
-    slug: card.slug,
+    slug: "",
     amt: 0,
+    email: "",
+    username : ""
   });
 
   const handleClose = () => setShow(false);
@@ -37,35 +38,12 @@ const Issue = ({ card }) => {
   }
 
   const handlePayment = (e) => {
-    setPayment({ ...payment, amt : Number(e.target.value) });
+    setPayment({...payment, amt : e.target.value});
+    setPayment({...payment, slug : card.slug});
   }
 
-  const makepayment = async () => {
+  const makepayment = () => {
     console.log(payment);
-    const token = localStorage.getItem('token');
-    const response = await axios.post('http://localhost:5000/hackathon/payer', payment, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      }
-    })
-    const fetched = response.data;
-    if (fetched.status == "update") {
-      const response2 = await axios.patch('http://localhost:5000/hackathon/payer', payment, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      const fetched2 = response2.data;
-    }
-    const response3 = await axios.patch('http://localhost:5000/hackathon/card', payment, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      const fetched3 = response3.data;
   }
 
   return (
@@ -128,8 +106,8 @@ const Issue = ({ card }) => {
               <Card className={`${styles.donate}`} style={{ width: '22rem' }}>
                 <Card.Body>
                   <div className={`${styles.fline} mt-2`}>
-                    <Card.Title><BiDonateHeart className={`${styles.donLogo} mb-1`}></BiDonateHeart> Donate</Card.Title>
-                    <Card.Link className='ms-auto fs-6' href="#">998 Supporters</Card.Link>
+                    <Card.Title><BiDonateHeart className={`${styles.donLogo} mb-1`}></BiDonateHeart>Donate</Card.Title>
+                    <div className='ms-auto fs-6'><Link href={`/supporters/${card.slug}`}>Supporters</Link></div>
                   </div><br />
                   <Card.Title className='fs-2'>₹ {card.amountRaised}</Card.Title>
                   <Card.Subtitle className="mb-2 "><span> raised of </span><span className={`${styles.raised} fs-5`}>₹ {card.amount}</span></Card.Subtitle>
@@ -147,7 +125,7 @@ const Issue = ({ card }) => {
                       </Modal.Header>
                       <Modal.Body>
                         <label className={`${styles.textt} mb-1`} htmlFor=""><span>Enter Amount<span className={`${styles.mand}`}>*</span></span></label><br />
-                        <input className={`${styles.labelL}`} type="number" placeholder='Amount' name='amt' onChange={handlePayment} />
+                        <input className={`${styles.labelL}`} type="number" placeholder='Amount' name='phone' onChange={handlePayment}/>
                       </Modal.Body>
                       <Modal.Footer>
                         {/* <Button variant="primary" onClick={makepayment}>

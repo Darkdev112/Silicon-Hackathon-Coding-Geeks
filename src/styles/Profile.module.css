@@ -197,6 +197,8 @@
 .issuecard {
     width: 18rem;
     transform: scale(0.7);
+    border-radius: 15px;
+    background-color: rgba(250, 235, 215, 0.486);
 
 }
 

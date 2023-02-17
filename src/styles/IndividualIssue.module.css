@@ -5,7 +5,7 @@
 .desc{
     border: 1px solid rgb(255, 255, 255);
     background-color: rgba(69, 43, 0, 0.3);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
     box-shadow: 10px 10px 7px rgba(40, 39, 39, 0.4);
 }
 .pic {
@@ -142,7 +142,7 @@
 .donate {
     border: 1px solid rgb(255, 255, 255);
     background-color: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
     box-shadow: 10px 10px 7px rgba(40, 39, 39, 0.4);
 }
 

@@ -45,7 +45,7 @@ const profile = ({userDetails}) => {
                 <div className={`col-lg-3 col-md-4 col-12 mb-3`}>
                     <div className={`${styles.acclsidecont} p-2 mx-auto`}>
                         <div className="mx-3 my-5 d-flex justify-content-center">
-                            <img src="/pexels-lukas-628241.jpg" className={`${styles.accig} img-thumbnail`} alt="..." />
+                            <img src="/dashimg.png" className={`${styles.accig} img-thumbnail`} alt="..." />
                         </div>
                         <div className={`${styles.acclside} mb-2`}>
                             <div className="text-center d-flex align-items-center justify-content-center p-2"><Link className={styles.profilelink} href="/profile">Dashboard</Link></div>
@@ -66,7 +66,7 @@ const profile = ({userDetails}) => {
                         <div className={`${styles.profilespace}`}></div>
                         <div className={`${styles.picborder}`}></div>
                         <div className={` d-flex flex-column align-items-left justify-content-left`}>
-                            <img src="/pexels-lukas-628241.jpg" className={`img-thumbnail ${styles.accig1}`} alt="..." />
+                            <img src="/dashimg.png" className={`img-thumbnail ${styles.accig1}`} alt="..." />
                         </div>
                         <div className="row">
                             <div className={`${styles.data} col-lg-7 col-md-12 col-12`}>
@@ -111,14 +111,14 @@ const profile = ({userDetails}) => {
 
                                 <div className='d-flex justify-content-center align-items-center row'>
                                     <div className={`${styles.donatecard} card m-3 mb-5 col-12`} >
-                                        <img className="card-img-top" src="/logo.png" alt="Card image cap" />
+                                        <img className="card-img-top" src="/finalogo.png" alt="Card image cap" />
                                         <div className={`${styles.donatecardbody} card-body`}>
                                             <div className="card-text mb-2">Some quick example text to build on the card title and make up the bulk of the card's content.</div>
                                             <div className="fs-4">Amount donated: <span className=''><span>&#8377;</span><span>2,000</span></span></div>
                                         </div>
                                     </div>
                                     <div className={`${styles.donatecard} card m-3 mb-5 col-12`} >
-                                        <img className="card-img-top" src="/logo.png" alt="Card image cap" />
+                                        <img className="card-img-top" src="/finalogo.png" alt="Card image cap" />
                                         <div className={`${styles.donatecardbody} card-body`}>
                                             <div className="card-text mb-2">Some quick example text to build on the card title and make up the bulk of the card's content.</div>
                                             <div className="fs-4">Amount donated: <span className=''><span>&#8377;</span><span>2,000</span></span></div>
@@ -131,14 +131,14 @@ const profile = ({userDetails}) => {
                                 <div className='fs-1 text-black mb-5  d-flex justify-content-center align-items-center fw-bold mt-5'>Your Raises</div>
                                 <div className='d-flex justify-content-center align-items-center row'>
                                     <div className={`${styles.issuecard} card m-3 mb-5 col-12`} >
-                                        <img className="card-img-top" src="/logo.png" alt="Card image cap" />
+                                        <img className="card-img-top" src="/finalogo.png" alt="Card image cap" />
                                         <div className={`${styles.issuecardbody} card-body`}>
                                             <div className="card-text mb-2">Some quick example text to build on the card title and make up the bulk of the card's content.</div>
                                             <div className="fs-4">Amount donated: <span className=''><span>&#8377;</span><span>2,000</span></span></div>
                                         </div>
                                     </div>
                                     <div className={`${styles.issuecard} card m-3 mb-5 col-12`} >
-                                        <img className="card-img-top" src="/logo.png" alt="Card image cap" />
+                                        <img className="card-img-top" src="/finalogo.png" alt="Card image cap" />
                                         <div className={`${styles.issuecardbody} card-body`}>
                                             <div className="card-text mb-2">Some quick example text to build on the card title and make up the bulk of the card's content.</div>
                                             <div className="fs-4">Amount donated: <span className=''><span>&#8377;</span><span>2,000</span></span></div>
