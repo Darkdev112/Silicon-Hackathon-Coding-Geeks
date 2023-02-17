@@ -5,7 +5,7 @@ const authentication=require('../middleware/auth')
 
 const { signup, login, homePage, updateLogin} = require('../controllers/control')
 const {postCards,getCards,updateCards} =require('../controllers/cardUser')
-const {postUserDetail,getUserDetail,getNGOdetail,postNGOdetail}=require('../controllers/userDetail')
+const {postUserDetail,getUserDetail,getNGOdetail,postNGOdetail,getAllUserDetail}=require('../controllers/userDetail')
 const {postPayer,updatePayer,getAllPayer,getSinglePayer}=require('../controllers/postPayer')
 
 
@@ -31,6 +31,7 @@ router.route('/user').post(upload.single('myFile'),authentication,postUserDetail
 router.route('/payer').post(authentication,postPayer).patch(authentication,updatePayer)
 router.route('/singlePayer').get(authentication,getSinglePayer)
 router.route('/allPayer').get(getAllPayer)
+router.route('/getallusers').get(getAllUserDetail)
 
 
 

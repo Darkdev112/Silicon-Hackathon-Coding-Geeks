@@ -57,7 +57,6 @@ const postUserDetail = async (req, res) => {
 }
 
 const getUserDetail = async(req,res)=>{
-    console.log("hiii dev");
     const Email=req.paras.email;   
     try {
         const uzzer=await user.findOne({email : Email});
@@ -65,6 +64,15 @@ const getUserDetail = async(req,res)=>{
     } catch (error) {
         console.log(error)
     }
+}
+
+const getAllUserDetail = async(req,res)=>{  
+  try {
+      const uzzer=await user.find({});
+      res.json({status:"ok",uzzer:uzzer});
+  } catch (error) {
+      console.log(error)
+  }
 }
 
 const postNGOdetail = async (req, res) => {
@@ -93,7 +101,6 @@ const postNGOdetail = async (req, res) => {
 }
 
 const getNGOdetail = async (req, res) => {
-  console.log('hiii dev')
   const Email = req.paras.email
   try {
     const uzzer = await user.findOne({ email: Email })
@@ -103,4 +110,4 @@ const getNGOdetail = async (req, res) => {
   }
 }
 
-module.exports = {postUserDetail,getUserDetail,getNGOdetail,postNGOdetail}
+module.exports = {postUserDetail,getUserDetail,getNGOdetail,postNGOdetail,getAllUserDetail}

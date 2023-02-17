@@ -13,8 +13,10 @@ import {BsFillCreditCardFill} from 'react-icons/bs'
 import {MdAddIcCall} from 'react-icons/md'
 import {GiBullseye} from 'react-icons/gi'
 import {FaBuilding} from 'react-icons/fa'
+import axios from 'axios'
 
-export default function Home() {
+export default function Home({cards,allUserDetails}) {
+  console.log(allUserDetails);
   return (
     <>
       <Head>
@@ -35,21 +37,21 @@ export default function Home() {
                   <Carousel.Item className={`${styles.dfircaro}`} interval={1000}>
                     <img
                       className={`${styles.fircaro} d-block w-100`}
-                      src="/1797971.jpg"
+                      src={cards[0].img}
                       alt="First slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item className={`${styles.dfircaro}`} interval={1000}>
                     <img
                       className={`${styles.fircaro} d-block w-100`}
-                      src="/5640557.jpg"
+                      src={cards[1].img}
                       alt="Second slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item className={`${styles.dfircaro}`} interval={1000}>
                     <img
                       className={`${styles.fircaro} d-block w-100`}
-                      src="/5591010.jpg"
+                      src={cards[2].img}
                       alt="Third slide"
                     />
                   </Carousel.Item>
@@ -60,36 +62,34 @@ export default function Home() {
                 <Carousel.Item className={`${styles.dcaro}`} interval={1000}>
                   <img
                     className={`${styles.caro} d-block w-100`}
-                    src="/1797971.jpg"
+                    src={cards[0].img}
                     alt="First slide"
                   />
                   <Carousel.Caption className={`${styles.newc}`}>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <h3>{cards[0].title}</h3>
+                    <p>{cards[0].description}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className={`${styles.dcaro}`} interval={1000}>
                   <img
                     className={`${styles.caro} d-block w-100`}
-                    src="/5640557.jpg"
+                    src={cards[1].img}
                     alt="Second slide"
                   />
                   <Carousel.Caption className={`${styles.newc}`}>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h3>{cards[1].title}</h3>
+                    <p>{cards[1].description}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className={`${styles.dcaro}`} interval={1000}>
                   <img
                     className={`${styles.caro} d-block w-100`}
-                    src="/5591010.jpg"
+                    src={cards[2].img}
                     alt="Third slide"
                   />
                   <Carousel.Caption className={`${styles.newc}`}>
-                    <h3>Third slide label</h3>
-                    <p>
-                      Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                    </p>
+                    <h3>{cards[2].title}</h3>
+                    <p>{cards[2].description}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>
@@ -100,21 +100,21 @@ export default function Home() {
                   <Carousel.Item className={`${styles.dseccaro}`} interval={1000}>
                     <img
                       className={`${styles.seccaro} d-block w-100`}
-                      src="/1797971.jpg"
+                      src={cards[0].img}
                       alt="First slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item className={`${styles.dseccaro}`} interval={1000}>
                     <img
                       className={`${styles.seccaro} d-block w-100`}
-                      src="/5640557.jpg"
+                      src={cards[1].img}
                       alt="Second slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item className={`${styles.dseccaro}`} interval={1000}>
                     <img
                       className={`${styles.seccaro} d-block w-100`}
-                      src="/5591010.jpg"
+                      src={cards[2].img}
                       alt="Third slide"
                     />
                   </Carousel.Item>
@@ -333,4 +333,19 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getServerSideProps(context) {
+  const response = await fetch("http://localhost:5000/hackathon/card");
+  const data = await response.json();
+  const allCards = data.info;
+  const response2  = await fetch("http://localhost:5000/hackathon/getallusers");
+  const data2 = await response2.json();
+  const alluserdetails = data2.uzzer;
+  const filteralluserdetails = alluserdetails.filter((item)=> {
+      return (item.NGOname!="")
+  });
+  return {
+      props: { cards: allCards, allUserDetails : filteralluserdetails }, 
+  }
 }
