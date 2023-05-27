@@ -1,3 +1,6 @@
 # Silicon-Hackathon-Coding-Geeks
 Project Heartraiser -  A fundraising website
-abhijeet sahu testing for pull command
+- Login as a user or NGO
+- Donate on the raised issues
+- Raise an issue 
+- Link a NGO
