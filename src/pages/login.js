@@ -19,30 +19,31 @@ const Login = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post('http://localhost:5000/hackathon/login', details , {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    if (response.data.status === "ok") {
-      localStorage.setItem('token', response.data.data);
-      toast.success('Logged in successfully', {
-        position: "top-center",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
+    try {
+      const response = await axios.post('http://localhost:5000/hackathon/login', details, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       })
-      setTimeout(() => {
-        setDetails(initialDetails);
-        router.push("/");
-      }, 1200)
-    }
-    else {
-      toast.error(`${response.data.error}`, {
+      if (response.data.status === "ok") {
+        localStorage.setItem('token', response.data.data);
+        toast.success('Logged in successfully', {
+          position: "top-center",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        })
+        setTimeout(() => {
+          setDetails(initialDetails);
+          router.push("/");
+        }, 1200)
+      }
+    } catch (error) {
+      toast.error(`Could not login`, {
         position: "top-center",
         autoClose: 1000,
         hideProgressBar: true,
@@ -70,7 +71,7 @@ const Login = () => {
       />
       <div className={styles.sin}>
         <div className="d-flex justify-content-center mt-5">
-        <h1 className={styles.title}>LOGIN</h1>
+          <h1 className={styles.title}>LOGIN</h1>
         </div>
         <div className="d-flex justify-content-center mb-3">
           <hr className={styles.hrr} />

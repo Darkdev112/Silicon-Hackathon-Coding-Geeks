@@ -94,7 +94,6 @@ const Donate = ({ cards }) => {
                 <div className={`input-group d-flex justify-content-center align-items-right  m-3`}>
                     <span className={`${styles.searchbar} form-outline d-flex `}>
                         <input type="search" id="form1" className={`form-control ${styles.searchbarinput}`} placeholder='Search' />
-                        {/* <label className="form-label" for="form1">Search</label> */}
                         <button type="button" className={`${styles.btnsearch} btn btn-primary`}>
                             <AiOutlineSearch></AiOutlineSearch>
                         </button>
@@ -111,7 +110,7 @@ const Donate = ({ cards }) => {
                                     <div className={`${styles.cent}`}>
                                         <Link href={`/issue/${item.slug}`} className={styles.linkcard}>
                                             <div className={`${styles.card} card p-3`}>
-                                                <div className={`${styles.divimg}`}><img src={item.img} className={`${styles.cardimgtop} card-img-top`} alt="..." /></div>
+                                                <img src={item.img} className={`${styles.cardimgtop} card-img-top`} alt="..." />
                                                 <div className={`${styles.cardbody} card-body p-2`}>
                                                     <div className={`${styles.titletext} card-title fs-4 fw-bold`}>{item.title}</div>
                                                     <div className={`d-flex align-items-center`}><span className={`${styles.bycolor}text-secondary me-2`}>By</span> <span className='fs-5 fw-bold'>{item.user}</span></div>

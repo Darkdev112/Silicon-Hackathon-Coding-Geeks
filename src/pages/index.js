@@ -2,20 +2,20 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Fhome.module.css'
 import Carousel from 'react-bootstrap/Carousel';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faBuilding} from '@fortawesome/free-solid-svg-icons'
-import {GrTransaction} from 'react-icons/gr'
-import {RiHandHeartFill} from 'react-icons/ri'
-import {HiUsers} from 'react-icons/hi'
-import {MdOutlineSecurity} from 'react-icons/md'
-import {RiHeartAddFill} from 'react-icons/ri'
-import {BsFillCreditCardFill} from 'react-icons/bs'
-import {MdAddIcCall} from 'react-icons/md'
-import {GiBullseye} from 'react-icons/gi'
-import {FaBuilding} from 'react-icons/fa'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBuilding } from '@fortawesome/free-solid-svg-icons'
+import { GrTransaction } from 'react-icons/gr'
+import { RiHandHeartFill } from 'react-icons/ri'
+import { HiUsers } from 'react-icons/hi'
+import { MdOutlineSecurity } from 'react-icons/md'
+import { RiHeartAddFill } from 'react-icons/ri'
+import { BsFillCreditCardFill } from 'react-icons/bs'
+import { MdAddIcCall } from 'react-icons/md'
+import { GiBullseye } from 'react-icons/gi'
+import { FaBuilding } from 'react-icons/fa'
 import axios from 'axios'
 
-export default function Home({cards,allUserDetails}) {
+export default function Home({ cards, allUserDetails }) {
   console.log(allUserDetails)
   return (
     <>
@@ -37,21 +37,21 @@ export default function Home({cards,allUserDetails}) {
                   <Carousel.Item className={`${styles.dfircaro}`} interval={1000}>
                     <img
                       className={`${styles.fircaro} d-block w-100`}
-                      src={cards[0].img}
+                      src={cards[0]?.img}
                       alt="First slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item className={`${styles.dfircaro}`} interval={1000}>
                     <img
                       className={`${styles.fircaro} d-block w-100`}
-                      src={cards[1].img}
+                      src={cards[1]?.img}
                       alt="Second slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item className={`${styles.dfircaro}`} interval={1000}>
                     <img
                       className={`${styles.fircaro} d-block w-100`}
-                      src={cards[2].img}
+                      src={cards[2]?.img}
                       alt="Third slide"
                     />
                   </Carousel.Item>
@@ -62,34 +62,34 @@ export default function Home({cards,allUserDetails}) {
                 <Carousel.Item className={`${styles.dcaro}`} interval={1000}>
                   <img
                     className={`${styles.caro} d-block w-100`}
-                    src={cards[0].img}
+                    src={cards[0]?.img}
                     alt="First slide"
                   />
                   <Carousel.Caption className={`${styles.newc}`}>
-                    <h3>{cards[0].title}</h3>
-                    <p>{cards[0].description}</p>
+                    <h3>{cards[0]?.title}</h3>
+                    <p>{cards[0]?.description}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className={`${styles.dcaro}`} interval={1000}>
                   <img
                     className={`${styles.caro} d-block w-100`}
-                    src={cards[1].img}
+                    src={cards[1]?.img}
                     alt="Second slide"
                   />
                   <Carousel.Caption className={`${styles.newc}`}>
-                    <h3>{cards[1].title}</h3>
-                    <p>{cards[1].description}</p>
+                    <h3>{cards[1]?.title}</h3>
+                    <p>{cards[1]?.description}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item className={`${styles.dcaro}`} interval={1000}>
                   <img
                     className={`${styles.caro} d-block w-100`}
-                    src={cards[2].img}
+                    src={cards[2]?.img}
                     alt="Third slide"
                   />
                   <Carousel.Caption className={`${styles.newc}`}>
-                    <h3>{cards[2].title}</h3>
-                    <p>{cards[2].description}</p>
+                    <h3>{cards[2]?.title}</h3>
+                    <p>{cards[2]?.description}</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>
@@ -100,21 +100,21 @@ export default function Home({cards,allUserDetails}) {
                   <Carousel.Item className={`${styles.dseccaro}`} interval={1000}>
                     <img
                       className={`${styles.seccaro} d-block w-100`}
-                      src={cards[0].img}
+                      src={cards[0]?.img}
                       alt="First slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item className={`${styles.dseccaro}`} interval={1000}>
                     <img
                       className={`${styles.seccaro} d-block w-100`}
-                      src={cards[1].img}
+                      src={cards[1]?.img}
                       alt="Second slide"
                     />
                   </Carousel.Item>
                   <Carousel.Item className={`${styles.dseccaro}`} interval={1000}>
                     <img
                       className={`${styles.seccaro} d-block w-100`}
-                      src={cards[2].img}
+                      src={cards[2]?.img}
                       alt="Third slide"
                     />
                   </Carousel.Item>
@@ -128,11 +128,11 @@ export default function Home({cards,allUserDetails}) {
           <div className={`${styles.abouthead}`}>
             <h1><span className={`${styles.abou}`}>About </span><span className={`${styles.uss}`}>Us</span></h1><hr className={`${styles.hr}`} />
             <div className={`${styles.detailss}`}>
-            <p className={`${styles.paraab}`}>We are non-profit organisation, working over India to help raising fund for anyone who is in need, to strengthen humanity and to face poverty.</p>
-            <p className={`${styles.paraab}`}>We will offer financial help to raise fund online. We will reach out to the people suffering from poverty, accident, disadvantages of everyday life. We are giving long-term support and emergency assistance to the patients. We sim to invest in real effective solution and to give immediate relief to the sufferer</p>
-            <p className={`${styles.paraab}`}>
-              We have a vision to develop India, to free people from penury and to help the destitute at times. We are working unfateringly to bring hope in the heart of poor, to help them fight against the poverty.
-            </p>
+              <p className={`${styles.paraab}`}>We are non-profit organisation, working over India to help raising fund for anyone who is in need, to strengthen humanity and to face poverty.</p>
+              <p className={`${styles.paraab}`}>We will offer financial help to raise fund online. We will reach out to the people suffering from poverty, accident, disadvantages of everyday life. We are giving long-term support and emergency assistance to the patients. We sim to invest in real effective solution and to give immediate relief to the sufferer</p>
+              <p className={`${styles.paraab}`}>
+                We have a vision to develop India, to free people from penury and to help the destitute at times. We are working unfateringly to bring hope in the heart of poor, to help them fight against the poverty.
+              </p>
             </div>
           </div><br />
 
@@ -340,13 +340,13 @@ export async function getServerSideProps(context) {
   const response = await fetch("http://localhost:5000/hackathon/card");
   const data = await response.json();
   const allCards = data.info;
-  const response2  = await fetch("http://localhost:5000/hackathon/getallusers");
+  const response2 = await fetch("http://localhost:5000/hackathon/getallusers");
   const data2 = await response2.json();
   const alluserdetails = data2.uzzer;
-  const filteralluserdetails = alluserdetails.filter((item)=> {
-      return item.NGOname
+  const filteralluserdetails = alluserdetails.filter((item) => {
+    return item.NGOname
   });
   return {
-      props: { cards: allCards, allUserDetails : filteralluserdetails }, 
+    props: { cards: allCards, allUserDetails: filteralluserdetails },
   }
 }
